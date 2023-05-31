@@ -21,20 +21,27 @@ _CACHE = {}
 # Build the semantic search model
 embedder = SentenceTransformer('multi-qa-mpnet-base-cos-v1')
 
+CHAPTER_COUNT = 5
+INSTRUCTION_SENTENCE_COUNT = 1
+PARAGRAPH_SETNTENCE_COUNT = 3
+
 
 def init_prompt(novel_type, description):
     if description == "":
         description = ""
     else:
         description = " about " + description
+
     return f"""
-Please write a {novel_type} novel{description} with 50 chapters. Follow the format below precisely:
+Please write a {novel_type} novel{description} with {CHAPTER_COUNT} chapters. Follow the format below precisely:
 
 Begin with the name of the novel.
 Next, write an outline for the first chapter. The outline should describe the background and the beginning of the novel.
-Write the first three paragraphs with their indication of the novel based on your outline. Write in a novelistic style and take your time to set the scene.
+Write the first three paragraphs with their indication of the novel based on your outline, each containing around {PARAGRAPH_SETNTENCE_COUNT} sentences.
+Write in a novelistic style and take your time to set the scene.
 Write a summary that captures the key information of the three paragraphs.
-Finally, write three different instructions for what to write next, each containing around five sentences. Each instruction should present a possible, interesting continuation of the story.
+Finally, write three different instructions for what to write next, each containing around {INSTRUCTION_SENTENCE_COUNT} sentences.
+Each instruction should present a possible, interesting continuation of the story.
 The output format should follow these guidelines:
 Name: <name of the novel>
 Outline: <outline for the first chapter>
