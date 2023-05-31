@@ -297,27 +297,27 @@ with gr.Blocks(title="RecurrentGPT", css="footer {visibility: hidden}", theme="d
                     inputs=[novel_type])
                 written_paras = gr.Textbox(
                     label="Written Paragraphs (editable)",
-                    max_lines=23, lines=23)
+                    max_lines=100, lines=50)
             with gr.Column():
                 with gr.Box():
                     gr.Markdown("### Memory Module\n")
                     short_memory = gr.Textbox(
                         label="Short-Term Memory (editable)",
-                        max_lines=3, lines=3)
+                        max_lines=20, lines=10)
                     long_memory = gr.Textbox(
                         label="Long-Term Memory (editable)",
-                        max_lines=6, lines=6)
+                        max_lines=20, lines=10)
                 with gr.Box():
                     gr.Markdown("### Instruction Module\n")
                     with gr.Row():
                         instruction1 = gr.Textbox(
-                            label="Instruction 1", max_lines=3, lines=3,
+                            label="Instruction 1", max_lines=10, lines=8,
                             interactive=False)
                         instruction2 = gr.Textbox(
-                            label="Instruction 2", max_lines=3, lines=3,
+                            label="Instruction 2", max_lines=10, lines=8,
                             interactive=False)
                         instruction3 = gr.Textbox(
-                            label="Instruction 3", max_lines=3, lines=3,
+                            label="Instruction 3", max_lines=10, lines=8,
                             interactive=False)
                     with gr.Row():
                         with gr.Column(scale=1, min_width=100):
@@ -329,7 +329,7 @@ with gr.Blocks(title="RecurrentGPT", css="footer {visibility: hidden}", theme="d
                         with gr.Column(scale=3, min_width=300):
                             selected_instruction = gr.Textbox(
                                 label="Selected Instruction (editable)",
-                                max_lines=5, lines=5)
+                                max_lines=10, lines=8)
 
                 btn_step = gr.Button("Next Step", variant="primary")
 
